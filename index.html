@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Максим Вдовенко | Разработка сайтов</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 16px 0;
+        }
+        .logo h1 {
+            font-size: 1.4rem;
+            color: #0f172a;
+        }
+        .logo p {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+        .nav {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .nav a {
+            color: #334155;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .nav a:hover {
+            background: #f1f5f9;
+            color: #2563eb;
+        }
+        .nav a.active {
+            background: #2563eb;
+            color: white;
+        }
+
+        main {
+            flex: 1;
+            padding: 48px 0;
+        }
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .page.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .project-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 15px;
+            padding: 12px;
+        }
+        .project-card:hover {
+            transform: translateY(-3px);
+        }
+        .project-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            background-size: cover;
+            background-position: center;
+            background-color: #e2e8f0;
+            flex-shrink: 0;
+        }
+        .project-info {
+            padding: 0;
+        }
+        .project-info h3 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .project-info p {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+        .project-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.75rem;
+        }
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        .price-card {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .price-card:hover {
+            transform: translateY(-4px);
+        }
+        .price-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+        .price-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .price-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2563eb;
+            margin-top: 12px;
+        }
+
+        .contacts-flex {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .contact-btn.tg {
+            background: #0088cc;
+            color: white;
+        }
+        .contact-btn.tg:hover {
+            background: #006699;
+            transform: scale(1.02);
+        }
+        .contact-btn.phone {
+            background: #00a650;
+            color: white;
+        }
+        .contact-btn.phone:hover {
+            background: #008f42;
+            transform: scale(1.02);
+        }
+        .contact-btn.email {
+            background: #64748b;
+            color: white;
+        }
+        .contact-btn.email:hover {
+            background: #475569;
+            transform: scale(1.02);
+        }
+
+        .badge {
+            display: inline-block;
+            background: #fef3c7;
+            color: #d97706;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .docs-block {
+            margin-top: 24px;
+            padding: 20px;
+            background: #f1f5f9;
+            border-radius: 16px;
+        }
+        .docs-block h4 {
+            margin-bottom: 12px;
+            font-size: 1rem;
+            color: #0f172a;
+        }
+        .docs-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .doc-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: #2563eb;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: 1px solid #e2e8f0;
+        }
+        .doc-link:hover {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        footer {
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            padding: 24px;
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid, .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            .header-flex {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav {
+                justify-content: center;
+            }
+            .card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-flex">
+        <div class="logo">
+            <h1>Максим Вдовенко</h1>
+            <p>разработка сайтов под ключ</p>
+        </div>
+        <div class="nav">
+            <a href="#" class="nav-link active" data-page="home">Главная</a>
+            <a href="#" class="nav-link" data-page="about">Обо мне</a>
+            <a href="#" class="nav-link" data-page="works">Работы</a>
+            <a href="#" class="nav-link" data-page="contest">Конкурс</a>
+            <a href="#" class="nav-link" data-page="services">Услуги</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <!-- ГЛАВНАЯ -->
+        <div id="home" class="page active">
+            <div class="card" style="text-align: center;">
+                <div class="badge" style="margin-bottom: 16px;">🏆 Диплом II степени — «БунтСтуд» 2026</div>
+                <h2 style="margin-bottom: 12px;">Максим Вдовенко</h2>
+                <p style="font-size: 1.2rem; color: #64748b;">Разработка сайтов для бизнеса и организаций</p>
+                <p style="margin: 24px 0;">Выпускник ДВССК, программист Центра занятости населения.<br>Делаю сайты быстро, понятно и удобно.</p>
+                <div class="contacts-flex" style="justify-content: center;">
+                    <a href="https://t.me/mortem59" class="contact-btn tg" target="_blank">💬 Написать в Telegram</a>
+                    <a href="tel:89143495274" class="contact-btn phone">📞 Позвонить</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ОБО МНЕ -->
+        <div id="about" class="page">
+            <div class="card">
+                <h2>Обо мне</h2>
+                <p style="margin-bottom: 16px;">👨‍🎓 Выпускник ДВССК по специальности «Информационные системы и программирование».</p>
+                <p style="margin-bottom: 16px;">🏢 Работаю в Центре занятости населения г. Большой Камень — понимаю задачи бизнеса и госучреждений изнутри.</p>
+                <p style="margin-bottom: 16px;">💻 Разрабатываю сайты-визитки, информационные порталы, интернет-магазины.</p>
+                <p style="margin-bottom: 16px;">⚙️ Технологии: HTML, CSS, JavaScript, базы данных (Supabase), админ-панели.</p>
+                <p>🎯 Делаю быстро, понятно для заказчика и удобно для пользователей.</p>
+            </div>
+        </div>
+
+        <!-- РАБОТЫ (компактные карточки, твоя ссылка на ДВССК) -->
+        <div id="works" class="page">
+            <h2>Мои работы</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img" style="background-image: url('https://iugfigogiogj.github.io/czn_bolshoy_kamen_2026/logo.svg'); background-size: cover;"></div>
+                    <div class="project-info">
+                        <h3>Центр занятости населения</h3>
+                        <p>Новости, вакансии, отзывы, админ-панель</p>
+                        <a href="https://iugfigogiogj.github.io/czn_bolshoy_kamen_2026/" class="project-link" target="_blank">Посмотреть сайт →</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img" style="background-image: url('https://avatars.mds.yandex.net/i?id=a36de6c981374ad896423de6ebe3c417_sr-5353565-images-thumbs&n=13'); background-size: cover;"></div>
+                    <div class="project-info">
+                        <h3>Сайт ДВССК</h3>
+                        <p>Официальный сайт колледжа, конкурс «БунтСтуд»</p>
+                        <a href="https://iugfigogiogj.github.io/dvssk-official-site/" class="project-link" target="_blank">Посмотреть сайт →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- КОНКУРС -->
+        <div id="contest" class="page">
+            <div class="card">
+                <div class="badge" style="margin-bottom: 16px;">Диплом II степени</div>
+                <h2>Краевой конкурс «БунтСтуд»</h2>
+                <p style="margin-bottom: 16px;"><strong>Название работы:</strong> Официальный сайт Дальневосточного судостроительного колледжа</p>
+                <p style="margin-bottom: 16px;"><strong>Участники:</strong> Кобзарь Матвей Максимович, Вдовенко Максим Игоревич</p>
+                <p style="margin-bottom: 16px;"><strong>Руководитель:</strong> Потапова Ксения Андреевна</p>
+                <p style="margin-bottom: 16px;"><strong>Что сделано:</strong> Современный адаптивный сайт с интерактивными модальными окнами, табами, анимированными элементами.</p>
+                <p><strong>Технологии:</strong> HTML, CSS, JavaScript</p>
+
+                <div class="docs-block">
+                    <h4>📎 Подтверждающие документы</h4>
+                    <div class="docs-links">
+                        <a href="https://iugfigogiogj.github.io/portfolio-site/diplom.pdf" class="doc-link" target="_blank">📄 Диплом II степени (PDF)</a>
+                        <a href="https://iugfigogiogj.github.io/portfolio-site/zayavka.docx" class="doc-link" target="_blank">📋 Заявка на конкурс (DOCX)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- УСЛУГИ -->
+        <div id="services" class="page">
+            <h2>Услуги и цены</h2>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <div class="price-icon">📄</div>
+                    <div class="price-title">Сайт-визитка</div>
+                    <div class="price-amount">5 000 – 7 000 ₽</div>
+                </div>
+                <div class="price-card">
+                    <div class="price-icon">🏢</div>
+                    <div class="price-title">Сайт компании</div>
+                    <div class="price-amount">10 000 – 12 000 ₽</div>
+                </div>
+                <div class="price-card">
+                    <div class="price-icon">🛍️</div>
+                    <div class="price-title">Интернет-магазин</div>
+                    <div class="price-amount">15 000 – 20 000 ₽</div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-bottom: 24px;">
+                <h3>⚙️ Доработки и поддержка</h3>
+                <p>Любые правки, консультации — от 500 ₽/час</p>
+                <p style="margin-top: 12px;">⏱️ Срок выполнения: сайт-визитка за 2-3 дня</p>
+            </div>
+
+            <div class="card">
+                <h3>📞 Связаться со мной</h3>
+                <div class="contacts-flex">
+                    <a href="https://t.me/mortem59" class="contact-btn tg" target="_blank">💬 Telegram: @mortem59</a>
+                    <a href="tel:89143495274" class="contact-btn phone">📞 8 (914) 349-52-74</a>
+                    <a href="mailto:mvdovenko.m@gmail.com" class="contact-btn email">✉️ mvdovenko.m@gmail.com</a>
+                </div>
+                <p style="margin-top: 16px;">📍 г. Большой Камень, Приморский край</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 Максим Вдовенко — разработка сайтов</p>
+</footer>
+
+<script>
+    const navLinks = document.querySelectorAll('.nav-link');
+    const pages = document.querySelectorAll('.page');
+
+    function showPage(pageId) {
+        pages.forEach(page => page.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('data-page') === pageId) {
+                link.classList.add('active');
+            }
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPage(link.getAttribute('data-page'));
+        });
+    });
+</script>
+</body>
+</html>
