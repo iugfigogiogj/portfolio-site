@@ -290,6 +290,25 @@
             font-weight: 600;
         }
 
+        .gallery {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 16px 0 12px 0;
+        }
+        .gallery img {
+            width: 120px;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
         footer {
             background: white;
             border-top: 1px solid #e2e8f0;
@@ -313,6 +332,9 @@
             }
             .card {
                 padding: 24px;
+            }
+            .gallery img {
+                width: 100px;
             }
         }
     </style>
@@ -364,7 +386,7 @@
             </div>
         </div>
 
-        <!-- РАБОТЫ (только живые проекты) -->
+        <!-- РАБОТЫ -->
         <div id="works" class="page">
             <h2>Мои работы</h2>
             <div class="projects-grid">
@@ -387,7 +409,7 @@
             </div>
         </div>
 
-        <!-- ДОКУМЕНТЫ (новая страница) -->
+        <!-- ДОКУМЕНТЫ (все ссылки ведут в docs/) -->
         <div id="docs" class="page">
             <h2>📄 Документы по проектам</h2>
             <div class="docs-grid">
@@ -404,7 +426,7 @@
                     <div class="doc-info">
                         <h4>Диплом II степени</h4>
                         <p>Краевой конкурс креативных web-сайтов «БунтСтуд»</p>
-                        <a href="https://iugfigogiogj.github.io/portfolio-site/diplom.pdf" class="doc-link" target="_blank">📥 Скачать PDF →</a>
+                        <a href="https://iugfigogiogj.github.io/portfolio-site/docs/diplom.pdf" class="doc-link" target="_blank">📥 Скачать PDF →</a>
                     </div>
                 </div>
                 <div class="doc-card">
@@ -412,7 +434,7 @@
                     <div class="doc-info">
                         <h4>Заявка на конкурс</h4>
                         <p>Заявка на участие в конкурсе «БунтСтуд» (DOCX)</p>
-                        <a href="https://iugfigogiogj.github.io/portfolio-site/zayavka.docx" class="doc-link" target="_blank">📥 Скачать DOCX →</a>
+                        <a href="https://iugfigogiogj.github.io/portfolio-site/docs/zayavka.docx" class="doc-link" target="_blank">📥 Скачать DOCX →</a>
                     </div>
                 </div>
             </div>
@@ -431,7 +453,7 @@
             </div>
         </div>
 
-        <!-- УСЛУГИ -->
+        <!-- УСЛУГИ + ПРЕЗЕНТАЦИИ -->
         <div id="services" class="page">
             <h2>Услуги и цены</h2>
             <div class="pricing-grid">
@@ -451,12 +473,21 @@
                     <div class="price-amount">15 000 – 20 000 ₽</div>
                 </div>
             </div>
+
             <div class="card" style="margin-bottom: 24px;">
-             <h3>📊 Презентации под заказ</h3>
-             <p>Корпоративные, учебные, бизнес-презентации. Любой стиль, анимация, адаптация под любой формат.</p>
-             <p><strong>Цена:</strong> от 1 000 ₽/слайд или от 5 000 ₽ за готовую презентацию (до 10 слайдов).</p>
-             <p><strong>Примеры:</strong> (здесь ссылки или скриншоты)</p>
-           </div>
+                <h3>📊 Презентации под заказ</h3>
+                <p>Корпоративные, учебные, бизнес-презентации, защита дипломов и проектов. Любой стиль, анимация, адаптация под любой формат.</p>
+                <p><strong>Цена:</strong> от 1 000 ₽/слайд или от 5 000 ₽ за готовую презентацию (до 10 слайдов).</p>
+                <p><strong>Пример из дипломной работы (скриншоты):</strong></p>
+                <div class="gallery">
+                    <img src="https://iugfigogiogj.github.io/portfolio-site/images/prez-1.png" alt="Слайд 1" onerror="this.src='https://placehold.co/120x80?text=Слайд+1'">
+                    <img src="https://iugfigogiogj.github.io/portfolio-site/images/prez-2.png" alt="Слайд 2" onerror="this.src='https://placehold.co/120x80?text=Слайд+2'">
+                    <img src="https://iugfigogiogj.github.io/portfolio-site/images/prez-3.png" alt="Слайд 3" onerror="this.src='https://placehold.co/120x80?text=Слайд+3'">
+                </div>
+                <p><strong>Полная версия презентации (PDF):</strong> <a href="https://iugfigogiogj.github.io/portfolio-site/docs/diplom_prezentaciya.pdf" class="project-link" target="_blank">📥 Скачать пример →</a></p>
+                <p style="margin-top: 12px; font-size: 0.8rem; color: #64748b;">✨ Форматы: PowerPoint, Google Slides, PDF. Адаптация под ваш стиль и требования.</p>
+            </div>
+
             <div class="card" style="margin-bottom: 24px;">
                 <h3>⚙️ Доработки и поддержка</h3>
                 <p>Любые правки, консультации — от 500 ₽/час</p>
