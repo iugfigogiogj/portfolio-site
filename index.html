@@ -168,6 +168,44 @@
             text-decoration: underline;
         }
 
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .doc-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .doc-card:hover {
+            transform: translateY(-3px);
+        }
+        .doc-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+        .doc-info h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .doc-info p {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+        .doc-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.75rem;
+        }
+
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -252,42 +290,6 @@
             font-weight: 600;
         }
 
-        .docs-block {
-            margin-top: 24px;
-            padding: 20px;
-            background: #f1f5f9;
-            border-radius: 16px;
-        }
-        .docs-block h4 {
-            margin-bottom: 12px;
-            font-size: 1rem;
-            color: #0f172a;
-        }
-        .docs-links {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-        .doc-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: white;
-            padding: 8px 16px;
-            border-radius: 30px;
-            text-decoration: none;
-            color: #2563eb;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.2s;
-            border: 1px solid #e2e8f0;
-        }
-        .doc-link:hover {
-            background: #2563eb;
-            color: white;
-            border-color: #2563eb;
-        }
-
         footer {
             background: white;
             border-top: 1px solid #e2e8f0;
@@ -299,7 +301,7 @@
         }
 
         @media (max-width: 768px) {
-            .projects-grid, .pricing-grid {
+            .projects-grid, .pricing-grid, .docs-grid {
                 grid-template-columns: 1fr;
             }
             .header-flex {
@@ -327,6 +329,7 @@
             <a href="#" class="nav-link active" data-page="home">Главная</a>
             <a href="#" class="nav-link" data-page="about">Обо мне</a>
             <a href="#" class="nav-link" data-page="works">Работы</a>
+            <a href="#" class="nav-link" data-page="docs">Документы</a>
             <a href="#" class="nav-link" data-page="contest">Конкурс</a>
             <a href="#" class="nav-link" data-page="services">Услуги</a>
         </div>
@@ -361,11 +364,10 @@
             </div>
         </div>
 
-        <!-- РАБОТЫ (3 карточки: ЦЗН, ДВССК, ТЗ ЦЗН) -->
+        <!-- РАБОТЫ (только живые проекты) -->
         <div id="works" class="page">
             <h2>Мои работы</h2>
             <div class="projects-grid">
-                <!-- Карточка 1: Живой сайт ЦЗН -->
                 <div class="project-card">
                     <div class="project-img" style="background-image: url('https://iugfigogiogj.github.io/czn_bolshoy_kamen_2026/logo.svg'); background-size: cover;"></div>
                     <div class="project-info">
@@ -374,7 +376,6 @@
                         <a href="https://iugfigogiogj.github.io/czn_bolshoy_kamen_2026/" class="project-link" target="_blank">Посмотреть сайт →</a>
                     </div>
                 </div>
-                <!-- Карточка 2: Сайт ДВССК (конкурс) -->
                 <div class="project-card">
                     <div class="project-img" style="background-image: url('https://avatars.mds.yandex.net/i?id=a36de6c981374ad896423de6ebe3c417_sr-5353565-images-thumbs&n=13'); background-size: cover;"></div>
                     <div class="project-info">
@@ -383,13 +384,35 @@
                         <a href="https://iugfigogiogj.github.io/dvssk-official-site/" class="project-link" target="_blank">Посмотреть сайт →</a>
                     </div>
                 </div>
-                <!-- Карточка 3: Техническое задание для ЦЗН (PDF) -->
-                <div class="project-card">
-                    <div class="project-img" style="background-image: url('https://iugfigogiogj.github.io/czn_bolshoy_kamen_2026/logo.svg'); background-size: cover;"></div>
-                    <div class="project-info">
-                        <h3>Техническое задание — ЦЗН</h3>
-                        <p>Полное описание функционала: новости, вакансии, отзывы, админ-панель, поиск</p>
-                        <a href="https://iugfigogiogj.github.io/portfolio-site/tz_czn.pdf" class="project-link" target="_blank">📄 Скачать ТЗ (PDF)</a>
+            </div>
+        </div>
+
+        <!-- ДОКУМЕНТЫ (новая страница) -->
+        <div id="docs" class="page">
+            <h2>📄 Документы по проектам</h2>
+            <div class="docs-grid">
+                <div class="doc-card">
+                    <div class="doc-icon">📋</div>
+                    <div class="doc-info">
+                        <h4>Техническое задание — ЦЗН</h4>
+                        <p>Полное описание функционала сайта: новости, вакансии, отзывы, админ-панель, поиск</p>
+                        <a href="https://iugfigogiogj.github.io/portfolio-site/docs/tz_czn.pdf" class="doc-link" target="_blank">📥 Скачать PDF →</a>
+                    </div>
+                </div>
+                <div class="doc-card">
+                    <div class="doc-icon">🏆</div>
+                    <div class="doc-info">
+                        <h4>Диплом II степени</h4>
+                        <p>Краевой конкурс креативных web-сайтов «БунтСтуд»</p>
+                        <a href="https://iugfigogiogj.github.io/portfolio-site/diplom.pdf" class="doc-link" target="_blank">📥 Скачать PDF →</a>
+                    </div>
+                </div>
+                <div class="doc-card">
+                    <div class="doc-icon">📝</div>
+                    <div class="doc-info">
+                        <h4>Заявка на конкурс</h4>
+                        <p>Заявка на участие в конкурсе «БунтСтуд» (DOCX)</p>
+                        <a href="https://iugfigogiogj.github.io/portfolio-site/zayavka.docx" class="doc-link" target="_blank">📥 Скачать DOCX →</a>
                     </div>
                 </div>
             </div>
@@ -405,14 +428,6 @@
                 <p style="margin-bottom: 16px;"><strong>Руководитель:</strong> Потапова Ксения Андреевна</p>
                 <p style="margin-bottom: 16px;"><strong>Что сделано:</strong> Современный адаптивный сайт с интерактивными модальными окнами, табами, анимированными элементами.</p>
                 <p><strong>Технологии:</strong> HTML, CSS, JavaScript</p>
-
-                <div class="docs-block">
-                    <h4>📎 Подтверждающие документы</h4>
-                    <div class="docs-links">
-                        <a href="https://iugfigogiogj.github.io/portfolio-site/diplom.pdf" class="doc-link" target="_blank">📄 Диплом II степени (PDF)</a>
-                        <a href="https://iugfigogiogj.github.io/portfolio-site/zayavka.docx" class="doc-link" target="_blank">📋 Заявка на конкурс (DOCX)</a>
-                    </div>
-                </div>
             </div>
         </div>
 
