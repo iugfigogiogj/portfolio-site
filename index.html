@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Максим Вдовенко | Разработка сайтов</title>
     <style>
         * {
@@ -16,7 +16,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
             background: #f8fafc;
             color: #1e293b;
             line-height: 1.5;
@@ -24,6 +24,7 @@
             flex-direction: column;
         }
 
+        /* Шапка */
         header {
             background: white;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
@@ -34,37 +35,39 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 16px;
         }
         .header-flex {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 16px;
-            padding: 16px 0;
+            gap: 12px;
+            padding: 12px 0;
         }
         .logo h1 {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: #0f172a;
         }
         .logo p {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: #64748b;
         }
         .nav {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
+            justify-content: center;
         }
         .nav a {
             color: #334155;
             text-decoration: none;
-            padding: 8px 16px;
+            padding: 6px 12px;
             border-radius: 30px;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 500;
             transition: all 0.2s;
+            white-space: nowrap;
         }
         .nav a:hover {
             background: #f1f5f9;
@@ -75,9 +78,10 @@
             color: white;
         }
 
+        /* Основной контент */
         main {
             flex: 1;
-            padding: 48px 0;
+            padding: 32px 0;
         }
         .page {
             display: none;
@@ -92,24 +96,24 @@
         }
 
         h2 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: #0f172a;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             letter-spacing: -0.02em;
         }
         h3 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: #1e293b;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .card {
             background: white;
             border-radius: 20px;
-            padding: 32px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
             transition: transform 0.2s, box-shadow 0.2s;
         }
         .card:hover {
@@ -117,29 +121,31 @@
             box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
         }
 
+        /* Сетка работ — на мобилках одна колонка */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 12px;
         }
         .project-card {
             background: white;
-            border-radius: 16px;
+            border-radius: 14px;
             overflow: hidden;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             transition: transform 0.2s;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
-            gap: 15px;
+            text-align: center;
             padding: 12px;
+            gap: 10px;
         }
         .project-card:hover {
             transform: translateY(-3px);
         }
         .project-img {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             border-radius: 12px;
             background-size: cover;
             background-position: center;
@@ -150,11 +156,11 @@
             padding: 0;
         }
         .project-info h3 {
-            font-size: 1rem;
+            font-size: 0.9rem;
             margin-bottom: 4px;
         }
         .project-info p {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #64748b;
             margin-bottom: 6px;
         }
@@ -162,179 +168,214 @@
             color: #2563eb;
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.75rem;
-        }
-        .project-link:hover {
-            text-decoration: underline;
+            font-size: 0.7rem;
         }
 
+        /* Документы */
         .docs-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            grid-template-columns: 1fr;
+            gap: 12px;
         }
         .doc-card {
             background: white;
-            border-radius: 16px;
-            padding: 20px;
+            border-radius: 14px;
+            padding: 16px;
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-        }
-        .doc-card:hover {
-            transform: translateY(-3px);
         }
         .doc-icon {
-            font-size: 2.5rem;
+            font-size: 2rem;
             flex-shrink: 0;
         }
         .doc-info h4 {
-            font-size: 1rem;
+            font-size: 0.9rem;
             margin-bottom: 4px;
         }
         .doc-info p {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #64748b;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .doc-link {
-            color: #2563eb;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
         }
 
+        /* Цены */
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-bottom: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
         }
         .price-card {
             background: white;
-            border-radius: 20px;
-            padding: 24px;
+            border-radius: 16px;
+            padding: 16px;
             text-align: center;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-        }
-        .price-card:hover {
-            transform: translateY(-4px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .price-icon {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
-        }
-        .price-title {
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 2rem;
             margin-bottom: 8px;
         }
+        .price-title {
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+        }
         .price-amount {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #2563eb;
-            margin-top: 12px;
+            margin-top: 8px;
         }
 
+        /* Контакты */
         .contacts-flex {
             display: flex;
-            gap: 16px;
+            gap: 10px;
             flex-wrap: wrap;
-            margin-top: 24px;
+            margin-top: 20px;
         }
         .contact-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
+            gap: 6px;
+            padding: 10px 18px;
             border-radius: 40px;
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.85rem;
             transition: all 0.2s;
         }
         .contact-btn.tg {
             background: #0088cc;
             color: white;
         }
-        .contact-btn.tg:hover {
-            background: #006699;
-            transform: scale(1.02);
-        }
         .contact-btn.phone {
             background: #00a650;
             color: white;
         }
-        .contact-btn.phone:hover {
-            background: #008f42;
-            transform: scale(1.02);
-        }
         .contact-btn.email {
             background: #64748b;
             color: white;
-        }
-        .contact-btn.email:hover {
-            background: #475569;
-            transform: scale(1.02);
         }
 
         .badge {
             display: inline-block;
             background: #fef3c7;
             color: #d97706;
-            padding: 4px 12px;
+            padding: 4px 10px;
             border-radius: 30px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
         }
 
+        /* Галерея скриншотов */
         .gallery {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
-            margin: 16px 0 12px 0;
+            margin: 12px 0;
         }
         .gallery img {
-            width: 120px;
+            width: 100px;
             height: auto;
-            border-radius: 12px;
+            border-radius: 10px;
             border: 1px solid #e2e8f0;
-            transition: transform 0.2s;
-            cursor: pointer;
-        }
-        .gallery img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         footer {
             background: white;
             border-top: 1px solid #e2e8f0;
             text-align: center;
-            padding: 24px;
+            padding: 20px;
             color: #64748b;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             margin-top: auto;
         }
 
-        @media (max-width: 768px) {
-            .projects-grid, .pricing-grid, .docs-grid {
-                grid-template-columns: 1fr;
+        /* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 12px;
+            }
+            main {
+                padding: 20px 0;
             }
             .header-flex {
                 flex-direction: column;
                 text-align: center;
             }
             .nav {
-                justify-content: center;
+                gap: 5px;
+            }
+            .nav a {
+                padding: 5px 10px;
+                font-size: 0.7rem;
+                white-space: nowrap;
+            }
+            h2 {
+                font-size: 1.3rem;
+                margin-bottom: 16px;
             }
             .card {
-                padding: 24px;
+                padding: 18px;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .project-card {
+                flex-direction: row;
+                text-align: left;
+                gap: 12px;
+                padding: 10px;
+            }
+            .project-img {
+                width: 60px;
+                height: 60px;
+            }
+            .project-info h3 {
+                font-size: 0.85rem;
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            .contacts-flex {
+                justify-content: center;
+            }
+            .contact-btn {
+                padding: 8px 14px;
+                font-size: 0.8rem;
             }
             .gallery img {
-                width: 100px;
+                width: 80px;
+            }
+            .doc-card {
+                padding: 12px;
+                gap: 10px;
+            }
+            .doc-icon {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Планшеты */
+        @media (min-width: 641px) and (max-width: 900px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            .project-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .project-img {
+                width: 80px;
+                height: 80px;
             }
         }
     </style>
@@ -363,12 +404,12 @@
         <!-- ГЛАВНАЯ -->
         <div id="home" class="page active">
             <div class="card" style="text-align: center;">
-                <div class="badge" style="margin-bottom: 16px;">🏆 Диплом II степени — «БунтСтуд» 2026</div>
-                <h2 style="margin-bottom: 12px;">Максим Вдовенко</h2>
-                <p style="font-size: 1.2rem; color: #64748b;">Разработка сайтов для бизнеса и организаций</p>
-                <p style="margin: 24px 0;">Выпускник ДВССК, программист Центра занятости населения.<br>Делаю сайты быстро, понятно и удобно.</p>
+                <div class="badge" style="margin-bottom: 12px;">🏆 Диплом II степени — «БунтСтуд» 2026</div>
+                <h2 style="margin-bottom: 8px;">Максим Вдовенко</h2>
+                <p style="font-size: 1rem; color: #64748b;">Разработка сайтов для бизнеса и организаций</p>
+                <p style="margin: 16px 0;">Выпускник ДВССК, программист Центра занятости населения.<br>Делаю сайты быстро, понятно и удобно.</p>
                 <div class="contacts-flex" style="justify-content: center;">
-                    <a href="https://t.me/mortem59" class="contact-btn tg" target="_blank">💬 Написать в Telegram</a>
+                    <a href="https://t.me/mortem59" class="contact-btn tg" target="_blank">💬 Telegram</a>
                     <a href="tel:89143495274" class="contact-btn phone">📞 Позвонить</a>
                 </div>
             </div>
@@ -378,10 +419,10 @@
         <div id="about" class="page">
             <div class="card">
                 <h2>Обо мне</h2>
-                <p style="margin-bottom: 16px;">👨‍🎓 Выпускник ДВССК по специальности «Информационные системы и программирование».</p>
-                <p style="margin-bottom: 16px;">🏢 Работаю в Центре занятости населения г. Большой Камень — понимаю задачи бизнеса и госучреждений изнутри.</p>
-                <p style="margin-bottom: 16px;">💻 Разрабатываю сайты-визитки, информационные порталы, интернет-магазины.</p>
-                <p style="margin-bottom: 16px;">⚙️ Технологии: HTML, CSS, JavaScript, базы данных (Supabase), админ-панели.</p>
+                <p style="margin-bottom: 12px;">👨‍🎓 Выпускник ДВССК по специальности «Информационные системы и программирование».</p>
+                <p style="margin-bottom: 12px;">🏢 Работаю в Центре занятости населения г. Большой Камень — понимаю задачи бизнеса и госучреждений изнутри.</p>
+                <p style="margin-bottom: 12px;">💻 Разрабатываю сайты-визитки, информационные порталы, интернет-магазины.</p>
+                <p style="margin-bottom: 12px;">⚙️ Технологии: HTML, CSS, JavaScript, базы данных (Supabase), админ-панели.</p>
                 <p>🎯 Делаю быстро, понятно для заказчика и удобно для пользователей.</p>
             </div>
         </div>
@@ -393,48 +434,48 @@
                 <div class="project-card">
                     <div class="project-img" style="background-image: url('https://iugfigogiogj.github.io/czn_bolshoy_kamen_2026/logo.svg'); background-size: cover;"></div>
                     <div class="project-info">
-                        <h3>Центр занятости населения</h3>
-                        <p>Новости, вакансии, отзывы, админ-панель</p>
-                        <a href="https://iugfigogiogj.github.io/czn_bolshoy_kamen_2026/" class="project-link" target="_blank">Посмотреть сайт →</a>
+                        <h3>Центр занятости</h3>
+                        <p>Новости, вакансии, отзывы</p>
+                        <a href="https://iugfigogiogj.github.io/czn_bolshoy_kamen_2026/" class="project-link" target="_blank">Перейти →</a>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="project-img" style="background-image: url('https://avatars.mds.yandex.net/i?id=a36de6c981374ad896423de6ebe3c417_sr-5353565-images-thumbs&n=13'); background-size: cover;"></div>
                     <div class="project-info">
                         <h3>Сайт ДВССК</h3>
-                        <p>Официальный сайт колледжа, конкурс «БунтСтуд»</p>
-                        <a href="https://iugfigogiogj.github.io/dvssk-official-site/" class="project-link" target="_blank">Посмотреть сайт →</a>
+                        <p>Конкурс «БунтСтуд»</p>
+                        <a href="https://iugfigogiogj.github.io/dvssk-official-site/" class="project-link" target="_blank">Перейти →</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ДОКУМЕНТЫ (все ссылки ведут в docs/) -->
+        <!-- ДОКУМЕНТЫ -->
         <div id="docs" class="page">
-            <h2>📄 Документы по проектам</h2>
+            <h2>📄 Документы</h2>
             <div class="docs-grid">
                 <div class="doc-card">
                     <div class="doc-icon">📋</div>
                     <div class="doc-info">
                         <h4>Техническое задание — ЦЗН</h4>
-                        <p>Полное описание функционала сайта: новости, вакансии, отзывы, админ-панель, поиск</p>
-                        <a href="https://iugfigogiogj.github.io/portfolio-site/docs/tz_czn.pdf" class="doc-link" target="_blank">📥 Скачать PDF →</a>
+                        <p>Полное описание функционала</p>
+                        <a href="https://iugfigogiogj.github.io/portfolio-site/docs/tz_czn.pdf" class="doc-link" target="_blank">📥 Скачать PDF</a>
                     </div>
                 </div>
                 <div class="doc-card">
                     <div class="doc-icon">🏆</div>
                     <div class="doc-info">
                         <h4>Диплом II степени</h4>
-                        <p>Краевой конкурс креативных web-сайтов «БунтСтуд»</p>
-                        <a href="https://iugfigogiogj.github.io/portfolio-site/docs/diplom.pdf" class="doc-link" target="_blank">📥 Скачать PDF →</a>
+                        <p>Конкурс «БунтСтуд»</p>
+                        <a href="https://iugfigogiogj.github.io/portfolio-site/docs/diplom.pdf" class="doc-link" target="_blank">📥 Скачать PDF</a>
                     </div>
                 </div>
                 <div class="doc-card">
                     <div class="doc-icon">📝</div>
                     <div class="doc-info">
                         <h4>Заявка на конкурс</h4>
-                        <p>Заявка на участие в конкурсе «БунтСтуд» (DOCX)</p>
-                        <a href="https://iugfigogiogj.github.io/portfolio-site/docs/zayavka.docx" class="doc-link" target="_blank">📥 Скачать DOCX →</a>
+                        <p>Участие в «БунтСтуд»</p>
+                        <a href="https://iugfigogiogj.github.io/portfolio-site/docs/zayavka.docx" class="doc-link" target="_blank">📥 Скачать DOCX</a>
                     </div>
                 </div>
             </div>
@@ -443,12 +484,12 @@
         <!-- КОНКУРС -->
         <div id="contest" class="page">
             <div class="card">
-                <div class="badge" style="margin-bottom: 16px;">Диплом II степени</div>
+                <div class="badge" style="margin-bottom: 12px;">Диплом II степени</div>
                 <h2>Краевой конкурс «БунтСтуд»</h2>
-                <p style="margin-bottom: 16px;"><strong>Название работы:</strong> Официальный сайт Дальневосточного судостроительного колледжа</p>
-                <p style="margin-bottom: 16px;"><strong>Участники:</strong> Кобзарь Матвей Максимович, Вдовенко Максим Игоревич</p>
-                <p style="margin-bottom: 16px;"><strong>Руководитель:</strong> Потапова Ксения Андреевна</p>
-                <p style="margin-bottom: 16px;"><strong>Что сделано:</strong> Современный адаптивный сайт с интерактивными модальными окнами, табами, анимированными элементами.</p>
+                <p style="margin-bottom: 12px;"><strong>Название работы:</strong> Официальный сайт Дальневосточного судостроительного колледжа</p>
+                <p style="margin-bottom: 12px;"><strong>Участники:</strong> Кобзарь М.М., Вдовенко М.И.</p>
+                <p style="margin-bottom: 12px;"><strong>Руководитель:</strong> Потапова К.А.</p>
+                <p style="margin-bottom: 12px;"><strong>Что сделано:</strong> Адаптивный сайт с модальными окнами, табами, анимацией.</p>
                 <p><strong>Технологии:</strong> HTML, CSS, JavaScript</p>
             </div>
         </div>
@@ -474,34 +515,34 @@
                 </div>
             </div>
 
-            <div class="card" style="margin-bottom: 24px;">
+            <div class="card" style="margin-bottom: 16px;">
                 <h3>📊 Презентации под заказ</h3>
-                <p>Корпоративные презентации, бизнес-презентации для инвесторов и партнёров, учебные работы, защиты проектов.</p>
-                <p><strong>Цена:</strong> от 1 000 ₽/слайд или от 5 000 ₽ за готовую презентацию (до 10 слайдов).</p>
-                <p><strong>Пример из дипломной работы (скриншоты):</strong></p>
+                <p>Корпоративные, бизнес-презентации, учебные работы, защиты проектов.</p>
+                <p><strong>Цена:</strong> от 1 000 ₽/слайд или от 5 000 ₽ за готовую (до 10 слайдов).</p>
+                <p><strong>Пример из дипломной работы:</strong></p>
                 <div class="gallery">
-                    <img src="https://iugfigogiogj.github.io/portfolio-site/images/prez-1.png" alt="Слайд 1" onerror="this.src='https://placehold.co/120x80?text=Слайд+1'">
-                    <img src="https://iugfigogiogj.github.io/portfolio-site/images/prez-2.png" alt="Слайд 2" onerror="this.src='https://placehold.co/120x80?text=Слайд+2'">
-                    <img src="https://iugfigogiogj.github.io/portfolio-site/images/prez-3.png" alt="Слайд 3" onerror="this.src='https://placehold.co/120x80?text=Слайд+3'">
+                    <img src="https://iugfigogiogj.github.io/portfolio-site/images/prez-1.png" alt="Слайд 1" onerror="this.src='https://placehold.co/100x70?text=Слайд+1'">
+                    <img src="https://iugfigogiogj.github.io/portfolio-site/images/prez-2.png" alt="Слайд 2" onerror="this.src='https://placehold.co/100x70?text=Слайд+2'">
+                    <img src="https://iugfigogiogj.github.io/portfolio-site/images/prez-3.png" alt="Слайд 3" onerror="this.src='https://placehold.co/100x70?text=Слайд+3'">
                 </div>
-                <p><strong>Полная версия презентации (PDF):</strong> <a href="https://iugfigogiogj.github.io/portfolio-site/docs/diplom_prezentaciya.pdf" class="project-link" target="_blank">📥 Скачать пример →</a></p>
-                <p style="margin-top: 12px; font-size: 0.8rem; color: #64748b;">✨ Форматы: PowerPoint, Google Slides, PDF. Адаптация под ваш стиль и требования.</p>
+                <p><strong>Полная версия (PDF):</strong> <a href="https://iugfigogiogj.github.io/portfolio-site/docs/diplom_prezentaciya.pdf" class="project-link" target="_blank">📥 Скачать пример</a></p>
+                <p style="margin-top: 10px; font-size: 0.75rem; color: #64748b;">✨ Форматы: PowerPoint, Google Slides, PDF</p>
             </div>
 
-            <div class="card" style="margin-bottom: 24px;">
+            <div class="card" style="margin-bottom: 16px;">
                 <h3>⚙️ Доработки и поддержка</h3>
                 <p>Любые правки, консультации — от 500 ₽/час</p>
-                <p style="margin-top: 12px;">⏱️ Срок выполнения: сайт-визитка за 2-3 дня</p>
+                <p>⏱️ Сайт-визитка за 2-3 дня</p>
             </div>
 
             <div class="card">
-                <h3>📞 Связаться со мной</h3>
+                <h3>📞 Контакты</h3>
                 <div class="contacts-flex">
-                    <a href="https://t.me/mortem59" class="contact-btn tg" target="_blank">💬 Telegram: @mortem59</a>
+                    <a href="https://t.me/mortem59" class="contact-btn tg" target="_blank">💬 @mortem59</a>
                     <a href="tel:89143495274" class="contact-btn phone">📞 8 (914) 349-52-74</a>
-                    <a href="mailto:mvdovenko.m@gmail.com" class="contact-btn email">✉️ mvdovenko.m@gmail.com</a>
+                    <a href="mailto:mvdovenko.m@gmail.com" class="contact-btn email">✉️ Почта</a>
                 </div>
-                <p style="margin-top: 16px;">📍 г. Большой Камень, Приморский край</p>
+                <p style="margin-top: 12px;">📍 г. Большой Камень, Приморский край</p>
             </div>
         </div>
     </div>
